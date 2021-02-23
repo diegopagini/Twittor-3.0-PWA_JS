@@ -64,6 +64,10 @@ var foto = null;
 // El usuario, contiene el ID del héroe seleccionado
 var usuario;
 
+// Init de la camara class
+//document.getElementById('player') sin Jquery
+const camara = new Camara($('#player')[0]);
+
 // ===== Codigo de la aplicación
 
 function crearMensajeHTML(mensaje, personaje, lat, lng, foto) {
@@ -417,6 +421,9 @@ btnLocation.on('click', () => {
 // que jQuery me cambie el valor del this
 btnPhoto.on('click', () => {
 	console.log('Inicializar camara');
+	contenedorCamara.removeClass('oculto');
+
+	camara.encender();
 });
 
 // Boton para tomar la foto

@@ -24,6 +24,7 @@ const APP_SHELL = [
 	'js/sw-utils.js',
 	'js/libs/plugins/mdtoast.min.js',
 	'js/libs/plugins/mdtoast.min.css',
+	'js/camara-class.js',
 ];
 
 const APP_SHELL_INMUTABLE = [
