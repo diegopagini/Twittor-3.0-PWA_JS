@@ -216,7 +216,6 @@ postBtn.on('click', function () {
 		user: usuario,
 		lat: lat,
 		lng: lng,
-		foto: foto,
 	};
 
 	fetch('api', {
@@ -230,10 +229,10 @@ postBtn.on('click', function () {
 		.then((res) => console.log('app.js', res))
 		.catch((err) => console.log('app.js error:', err));
 
-	camera.apagar();
-	contenedorCamara.addClass('oculto');
+	// camera.apagar();
+	// contenedorCamara.addClass('oculto');
 
-	crearMensajeHTML(mensaje, usuario, lat, lng, foto);
+	crearMensajeHTML(mensaje, usuario, lat, lng);
 
 	foto = null;
 });
@@ -396,7 +395,21 @@ function mostrarMapaModal(lat, lng) {
 
 // Obtener la geolocalización
 btnLocation.on('click', () => {
-	console.log('Botón geolocalización');
+	// console.log('Botón geolocalización');
+	$.mdtoast('Cargando mapa...', {
+		interaction: true,
+		interactionTimeout: 2000,
+		actionText: 'Ok!',
+	});
+
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition((pos) => {
+			console.log(pos);
+			mostrarMapaModal(pos.coords.latitude, pos.coords.longitude);
+			lat = pos.coords.latitude;
+			lng = pos.coords.longitude;
+		});
+	}
 });
 
 // Boton de la camara
