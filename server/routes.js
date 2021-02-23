@@ -26,6 +26,7 @@ router.post('/', function (req, res) {
 		user: req.body.user,
 		lat: req.body.lat,
 		lng: req.body.lng,
+		foto: req.body.foto,
 	};
 
 	mensajes.push(mensaje);

@@ -220,6 +220,7 @@ postBtn.on('click', function () {
 		user: usuario,
 		lat: lat,
 		lng: lng,
+		foto: foto,
 	};
 
 	fetch('api', {
@@ -236,7 +237,7 @@ postBtn.on('click', function () {
 	// camera.apagar();
 	// contenedorCamara.addClass('oculto');
 
-	crearMensajeHTML(mensaje, usuario, lat, lng);
+	crearMensajeHTML(mensaje, usuario, lat, lng, foto);
 
 	foto = null;
 });
@@ -429,6 +430,12 @@ btnPhoto.on('click', () => {
 // Boton para tomar la foto
 btnTomarFoto.on('click', () => {
 	console.log('Botón tomar foto');
+
+	foto = camara.tomarFoto();
+
+	camara.apagar();
+
+	// console.log(foto);
 });
 
 // Share API
